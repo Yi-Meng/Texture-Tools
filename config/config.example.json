@@ -1,0 +1,20 @@
+{
+  "mode": "pad",
+  "rounding": "up",
+  "background": [0, 0, 0, 0],
+  "resample": "lanczos",
+  "anchor": "center",
+  "limit_smaller": false,
+  "only_shrink": false,
+  "overwrite": false,
+  "suffix": "_pot",
+  "output_dir": "",
+  "file_types": [
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".tga",
+    ".bmp",
+    ".webp"
+  ]
+}
