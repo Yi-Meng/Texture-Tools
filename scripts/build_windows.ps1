@@ -7,6 +7,7 @@ $ProjectRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Pa
 $DistRoot = Join-Path $ProjectRoot "dist"
 $BuildRoot = Join-Path $ProjectRoot "build"
 $SpecRoot = Join-Path $ProjectRoot "spec"
+$SrcRoot = Join-Path $ProjectRoot "src"
 
 Set-Location $ProjectRoot
 
@@ -25,7 +26,9 @@ $commonArgs = @(
     "--clean",
     "--distpath", $DistRoot,
     "--workpath", $BuildRoot,
-    "--specpath", $SpecRoot
+    "--specpath", $SpecRoot,
+    "--paths", $SrcRoot,
+    "--collect-submodules", "textures_tool"
 )
 
 if (-not $CliOnly) {

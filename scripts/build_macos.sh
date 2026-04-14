@@ -12,6 +12,7 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 DIST_DIR="$PROJECT_ROOT/dist"
 BUILD_DIR="$PROJECT_ROOT/build"
 SPEC_DIR="$PROJECT_ROOT/spec"
+SRC_DIR="$PROJECT_ROOT/src"
 
 cd "$PROJECT_ROOT"
 
@@ -34,6 +35,8 @@ COMMON_ARGS=(
   --distpath "$DIST_DIR"
   --workpath "$BUILD_DIR"
   --specpath "$SPEC_DIR"
+  --paths "$SRC_DIR"
+  --collect-submodules textures_tool
 )
 
 if [[ "$CLI_ONLY" -eq 0 ]]; then

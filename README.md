@@ -32,6 +32,7 @@ TexturesTool/
 - 支持两种策略
   - `pad`：保持原始内容尺寸不变，只扩展画布
   - `scale`：直接把内容缩放到目标尺寸
+- 扫描目录时会自动跳过 Unity `.meta` 文件和所有非图片文件
 - 支持命令行和 Tkinter GUI
 - Windows 可通过 `.bat` 启动
 - macOS 可通过 `.command` 启动

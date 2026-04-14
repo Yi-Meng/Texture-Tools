@@ -125,19 +125,33 @@ def load_config(config_path: Path | None) -> dict:
     return config
 
 
-def gather_images(inputs: Iterable[str], file_types: Iterable[str]) -> list[Path]:
+def is_supported_image(path: Path, file_types: Iterable[str]) -> bool:
     allowed = {extension.lower() for extension in file_types}
+    return path.is_file() and path.suffix.lower() in allowed
+
+
+def should_ignore_path(path: Path, file_types: Iterable[str]) -> bool:
+    if not path.is_file():
+        return False
+
+    if path.suffix.lower() == ".meta":
+        return True
+
+    return not is_supported_image(path, file_types)
+
+
+def gather_images(inputs: Iterable[str], file_types: Iterable[str]) -> list[Path]:
     files: list[Path] = []
 
     for raw in inputs:
         path = Path(raw).expanduser().resolve()
-        if path.is_file() and path.suffix.lower() in allowed:
+        if is_supported_image(path, file_types):
             files.append(path)
         elif path.is_dir():
             files.extend(
                 candidate
                 for candidate in path.rglob("*")
-                if candidate.is_file() and candidate.suffix.lower() in allowed
+                if not should_ignore_path(candidate, file_types)
             )
 
     return sorted(set(files))
