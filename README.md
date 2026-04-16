@@ -1,23 +1,19 @@
 # Textures Tool
 
 ## 是什么
-
-一个面向技术美术的批量图片尺寸处理工具，用于把 UI 或贴图资源整理为 2 的整数次幂尺寸。
+一个面向技术美术的批量图片处理工具，用来把 UI 图或贴图整理为 2 的整数次幂尺寸。
 
 支持两种处理方式：
-
-- `pad`：保持原始内容尺寸不变，只扩展画布
-- `scale`：直接把内容缩放到目标尺寸
+- `pad`：保持原内容尺寸不变，只扩展画布。
+- `scale`：直接把内容缩放到目标尺寸。
 
 支持命令行和 Tkinter GUI。
 
 扫描文件夹时会自动跳过：
-
 - Unity `.meta` 文件
 - 所有非图片文件
 
-当前支持的图片类型：
-
+当前支持的图片格式：
 - `.png`
 - `.jpg`
 - `.jpeg`
@@ -26,7 +22,6 @@
 - `.webp`
 
 ## 怎么用
-
 先安装依赖：
 
 ```bash
@@ -88,9 +83,23 @@ Windows：
 ./build_windows.ps1
 ```
 
-macOS：
+macOS 基础打包：
 
 ```bash
 chmod +x build_macos.sh
 ./build_macos.sh
+```
+
+macOS 正式发布包（签名 + notarization + Release 产物）：
+
+```bash
+export APPLE_SIGN_IDENTITY="Developer ID Application: Your Name (TEAMID)"
+export APPLE_NOTARY_PROFILE="your-notary-profile"
+./build_macos.sh --release
+```
+
+正式发布产物会输出到：
+
+```text
+release_assets/
 ```
